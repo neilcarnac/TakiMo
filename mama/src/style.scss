@@ -1,19 +1,23 @@
 @mixin mobile {
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 560px) {
     @content;
   }
 }
+
 @mixin tablet {
-  @media screen and (max-width: 768) {
+  @media screen and (max-width: 768px) {
     @content;
   }
 }
+
 @mixin laptop {
   @media screen and (max-width: 1220px) {
     @content;
   }
 }
-
+body{
+  font-family: 'Poppins', sans-serif;
+}
 .formContainer {
   background-color: #a7bcff;
   height: 100vh;
@@ -35,9 +39,11 @@
       font-weight: bold;
       font-size: 24px;
     }
+
     .title {
       color: #5d5b8d;
     }
+
     form {
       display: flex;
       flex-direction: column;
@@ -50,10 +56,13 @@
         border-bottom: 2px solid #a7bcff;
         width: 250px;
         outline: none;
+
+
         &::placeholder {
           color: rgb(175, 175, 175);
         }
       }
+
       button {
         background-color: #7b96ec;
         color: white;
@@ -71,14 +80,16 @@
         font-size: 12px;
         font-weight: bold;
         justify-items: center;
+
         img {
           width: 20px;
           height: 20px;
         }
       }
     }
+
     p {
-      color: #5d5b8d;
+      color: #121212;
       font-size: 12px;
       font-weight: bold;
       margin-top: 10px;
@@ -94,39 +105,57 @@
   justify-content: center;
 
   .container {
-    border: 1px solid white;
+    // border: 1px solid white;
     border-radius: 10px;
-    width: 90%;
-    height: 90%;
+    width: 30%;
+    height: 80%;
     display: flex;
-    overflow: hidden;
+    // overflow: hidden;
+
     @include tablet {
-      width: 90%;
+      width: 90%; // Adjust the width for tablet
     }
+
     .sidebar {
-      flex: 1;
+      // flex: 1;
+      // height: 100%;
+      height: 86vh;
       border-right: 1px solid white;
-      background-color: #3e3c61;
-      @include tablet() {
-        position: relative;
+      background-color: #121212;
+
+      @include mobile {
+        flex: auto;
+        width: 5%;
       }
 
       .search {
         border: 1px solid gray;
 
         .searchForm {
-          padding: 10px;
+          padding: 3px;
+
+          @include mobile {
+            width: 100%; // Adjust the width for mobile
+            position: relative;
+            height: 22px;
+            
+            
+          }
+
           input {
             background-color: transparent;
             border: none;
             color: white;
             outline: none;
+
             &::placeholder {
               color: gray;
             }
           }
         }
       }
+      
+
       .userChat {
         padding: 10px;
         display: flex;
@@ -134,25 +163,39 @@
         gap: 10px;
         color: white;
         transition: all 0.25s ease-in-out;
+       
 
         &:hover {
           background-color: #2f2d52;
           cursor: pointer;
         }
+
         img {
           width: 50px;
           height: 50px;
           border-radius: 50%;
           object-fit: cover;
+          @include mobile {
+            width: 30px;
+            height: 30px;
+          }
         }
+
         .userChatInfo {
           span {
+            @include mobile {
+              font-size: 14px;
+            }
             font-size: 18px;
             font-weight: 500;
           }
+
           p {
             font-style: 14px;
             color: lightgray;
+            @include mobile {
+              font-size: 12px;
+            }
           }
         }
       }
@@ -163,27 +206,47 @@
       align-items: center;
       background-color: #2f2d52;
       height: 40px;
-      padding: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
       justify-content: space-between;
       color: white;
+      @include mobile {
+        height: 10px;
+      }
 
       .logo {
         font-weight: bold;
-        // font-size: 24px;
-        @include tablet() {
+
+        @include mobile {
           display: none;
         }
       }
+
       .user {
         display: flex;
         align-items: center;
         gap: 10px;
+        font-size: small;
         cursor: pointer;
+        padding-right: 10px;
+        // @include mobile {
+        //   align-items: start;
+        //   flex-direction: column;
+        //   gap: 5px;
+        // }
+
         img {
           width: 28px;
           height: 28px;
           border-radius: 50%;
+          @include mobile {
+            width: 14px;
+            height: 14px;
+          }
         }
+
         button {
           background-color: #5d5b8d;
           color: #ddddf7;
@@ -191,6 +254,9 @@
           cursor: pointer;
           border: none;
           padding: 5px;
+          @include mobile {
+            font-size: 6px;
+          }
         }
       }
     }
@@ -200,7 +266,7 @@
 
       .chatInfo {
         height: 40px;
-        background-color: #5d5b8d;
+        background-color: #121212;
         display: flex;
         padding: 10px;
         align-items: center;
@@ -211,10 +277,16 @@
           display: flex;
           gap: 10px;
           margin-right: 10px;
+
           img {
             width: 20px;
             height: 20px;
             cursor: pointer;
+            @include mobile {
+              // width: 15px;
+              display: none;
+              // height: 15px;
+            }
           }
         }
       }
@@ -224,48 +296,68 @@
         padding: 10px;
         height: calc(100% - 150px);
         overflow: scroll;
-      
+        @include mobile {
+          height: calc(100% - 100px);
+        }
+
         .message {
           display: flex;
           gap: 20px;
-      
+          @include mobile {
+            gap: 10px;
+          }
+
           .messageInfo {
             display: flex;
             flex-direction: column;
             color: gray;
             margin-bottom: 10px;
-      
+            @include mobile {
+              font-size: 10px;
+            }
+
             img {
               width: 40px;
               height: 40px;
               border-radius: 50%;
               object-fit: cover;
+              @include mobile {
+                width: 20px;
+                height: 20px;
+              }
             }
           }
-      
+
           .messageContent {
             max-width: 80%;
             display: flex;
             gap: 5px;
             flex-direction: column;
-      
+            @include mobile {
+              max-width: 70%;
+            }
+
             img {
               width: 50%;
+              
             }
-      
+
             p {
               background-color: white;
               padding: 10px 20px;
               border-radius: 0 10px 10px 10px;
               max-width: max-content;
+              @include mobile {
+                font-size: 10px;
+              }
             }
-      
+
             &.owner {
               flex-direction: row-reverse;
-      
+
               .messageContent {
                 align-items: flex-end;
-      
+
                 p {
                   background-color: #8da4f1;
                   padding: 10px 20px;
@@ -277,7 +369,6 @@
           }
         }
       }
-      
 
       .input {
         background-color: white;
@@ -294,6 +385,7 @@
           padding-left: 20px;
           color: #2f2d52;
         }
+
         button {
           background-color: #5d5b8d;
           color: white;
@@ -301,11 +393,13 @@
           padding: 10px 15px;
           cursor: pointer;
         }
+
         .send {
           display: flex;
           align-items: center;
           gap: 10px;
           padding: 10px;
+
           img {
             width: 20px;
             height: 20px;
